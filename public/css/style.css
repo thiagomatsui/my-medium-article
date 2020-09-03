@@ -1,0 +1,56 @@
+.my-medium-article {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.my-medium-article-item {
+  width: 48%;
+  margin-bottom: 30px;
+  background: #eee;
+}
+
+.widget_my_medium_article_widget .my-medium-article-item {
+  width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .my-medium-article-item {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+.mediumArticle a {
+  display: block;
+  position: relative;
+  transition: 0.3s;
+}
+
+.mediumArticle a:hover {
+  opacity: 0.7;
+}
+
+.mediumArticleImg img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 767px) {
+  .mediumArticleImg img {
+    height: 120px;
+  }
+}
+
+.mediumArticleCnt {
+  padding: 20px;
+}
+
+.mediumArticleTitle {
+  font-size: 18px;
+}
+
+.mediumArticleDate {
+  margin-top: 10px;
+}
