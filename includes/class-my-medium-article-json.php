@@ -37,7 +37,7 @@ if(!class_exists('My_Medium_Article_Json')){
                 if(!empty($upload_dir['basedir'])){
                     $dirname = $upload_dir['basedir'] . '/' . $this->dirname;
                     if(!file_exists($dirname)){
-                        wp_mkdir_p( $dirname );
+                        wp_mkdir_p($dirname);
                     }
                     return $dirname;
                 }
@@ -47,35 +47,21 @@ if(!class_exists('My_Medium_Article_Json')){
             public function from_medium_feed() {
 
                 $medium_id  = $this->medium_id;
-                // $response   = file_get_contents("https://medium.com/feed/{$medium_id}");
 
-                $conn = curl_init();
-                curl_setopt($conn, CURLOPT_URL, "https://medium.com/feed/{$medium_id}");
-                curl_setopt($conn, CURLOPT_RETURNTRANSFER, true);
-                $response = curl_exec($conn);
-                curl_close($conn);
-
-                $xml = simplexml_load_string($response, "SimpleXMLElement", LIBXML_NOCDATA);
+                $response    = wp_remote_get("https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/{$medium_id}");
+                $json        = wp_remote_retrieve_body($response);
+                $medium_info = json_decode($json);
 
                 $medium_posts = array();
 
-                foreach($xml->channel as $channel) {
-                    // Medium info
-                    $medium_posts['channel']['title']       = (string)$channel->title;
-                    $medium_posts['channel']['description'] = (string)$channel->description;
-                    $medium_posts['channel']['link']        = (string)$channel->link;
-                    $medium_posts['channel']['image']       = (string)$channel->image->url;
-                }
-
-                $data   = array();
+                // Medium info
+                $medium_posts['feed']['title']       = (string)$medium_info->feed->title;
+                $medium_posts['feed']['description'] = (string)$medium_info->feed->description;
+                $medium_posts['feed']['url']         = (string)$medium_info->feed->url;
+                $medium_posts['feed']['image']       = (string)$medium_info->feed->image;
 
                 $i = 0;
-
-                foreach($xml->channel->item as $item) {
-                    $content = $item->children('http://purl.org/rss/1.0/modules/content/');
-                    $data['content'] = $content->encoded;
-                    $pattern = '/<img.*?src\s*=\s*[\"|\'](.*?)[\"|\'].*?>/i';
-                    preg_match($pattern, $data['content'], $data['images']);
+                foreach($medium_info->items as $item) {
 
                     $day = new DateTime($item->pubDate);
 
@@ -83,8 +69,8 @@ if(!class_exists('My_Medium_Article_Json')){
                     $medium_posts['posts'][$i]['link']    = (string)$item->guid;
                     $medium_posts['posts'][$i]['title']   = (string)$item->title;
                     $medium_posts['posts'][$i]['date']    = $day->format('Y-m-d');
-                    $medium_posts['posts'][$i]['image']   = $data['images'][1];
-                    $medium_posts['posts'][$i]['content'] = $data['content'];
+                    $medium_posts['posts'][$i]['image']   = (string)$item->thumbnail;
+                    $medium_posts['posts'][$i]['content'] = (string)$item->description;
 
                     $i++;
                 }
@@ -94,9 +80,6 @@ if(!class_exists('My_Medium_Article_Json')){
             }
 
             private function from_file() {
-
-                // $json_path = $this->get_filename_full_path();
-                // $json = file_get_contents($json_path);
 
                 $json_path = wp_upload_dir()['baseurl'] . '/' . MY_MEDIUM_ARTICLE_PLUGIN_SLUG . '/' . MY_MEDIUM_ARTICLE_JSON_FILENAME;
                 $response  = wp_remote_get($json_path);
@@ -129,11 +112,9 @@ if(!class_exists('My_Medium_Article_Json')){
             public function get_content() {
 
                 if($this->is_expired()){
-                    // echo ('FROM MEDIUM FEED');
                     $json_content = $this->from_medium_feed();
                     $this->save_file($json_content);
                 } else {
-                    // echo ('FROM LOCAL JSON FILE');
                     $json_content = $this->from_file();
                 }
 
