@@ -55,9 +55,6 @@ if(!class_exists('My_Medium_Article_Json')){
                 $response = curl_exec($conn);
                 curl_close($conn);
 
-                $response  = wp_remote_get($json_path);
-                $json      = wp_remote_retrieve_body($response);
-
                 $xml = simplexml_load_string($response, "SimpleXMLElement", LIBXML_NOCDATA);
 
                 $medium_posts = array();
