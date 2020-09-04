@@ -46,22 +46,31 @@ if(!class_exists('My_Medium_Article_Json')){
 
             public function from_medium_feed() {
 
-                $medium_id  = $this->medium_id;
+                $medium_id = $this->medium_id;
+                $response  = wp_remote_get("https://medium.com/feed/{$medium_id}", array(
+                    'user-agent'=> ''
+                ));
+                $content   = wp_remote_retrieve_body($response);
+                $xml       = simplexml_load_string($content, "SimpleXMLElement", LIBXML_NOCDATA);
 
-                $response    = wp_remote_get("https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/{$medium_id}");
-                $json        = wp_remote_retrieve_body($response);
-                $medium_info = json_decode($json);
 
                 $medium_posts = array();
+                $data         = array();
 
-                // Medium info
-                $medium_posts['feed']['title']       = (string)$medium_info->feed->title;
-                $medium_posts['feed']['description'] = (string)$medium_info->feed->description;
-                $medium_posts['feed']['url']         = (string)$medium_info->feed->url;
-                $medium_posts['feed']['image']       = (string)$medium_info->feed->image;
+                foreach($xml->channel as $channel) {
+                    // Medium info
+                    $medium_posts['channel']['title']       = (string)$channel->title;
+                    $medium_posts['channel']['description'] = (string)$channel->description;
+                    $medium_posts['channel']['link']        = (string)$channel->link;
+                    $medium_posts['channel']['image']       = (string)$channel->image->url;
+                }
 
                 $i = 0;
-                foreach($medium_info->items as $item) {
+                foreach($xml->channel->item as $item) {
+                    $content = $item->children('http://purl.org/rss/1.0/modules/content/');
+                    $data['content'] = $content->encoded;
+                    $pattern = '/<img.*?src\s*=\s*[\"|\'](.*?)[\"|\'].*?>/i';
+                    preg_match($pattern, $data['content'], $data['images']);
 
                     $day = new DateTime($item->pubDate);
 
@@ -69,8 +78,8 @@ if(!class_exists('My_Medium_Article_Json')){
                     $medium_posts['posts'][$i]['link']    = (string)$item->guid;
                     $medium_posts['posts'][$i]['title']   = (string)$item->title;
                     $medium_posts['posts'][$i]['date']    = $day->format('Y-m-d');
-                    $medium_posts['posts'][$i]['image']   = (string)$item->thumbnail;
-                    $medium_posts['posts'][$i]['content'] = (string)$item->description;
+                    $medium_posts['posts'][$i]['image']   = $data['images'][1];
+                    $medium_posts['posts'][$i]['content'] = $data['content'];
 
                     $i++;
                 }
@@ -110,13 +119,14 @@ if(!class_exists('My_Medium_Article_Json')){
             }
 
             public function get_content() {
+                $json_content = $this->from_medium_feed();
 
-                if($this->is_expired()){
-                    $json_content = $this->from_medium_feed();
-                    $this->save_file($json_content);
-                } else {
-                    $json_content = $this->from_file();
-                }
+                // if($this->is_expired()){
+                //     $json_content = $this->from_medium_feed();
+                //     $this->save_file($json_content);
+                // } else {
+                //     $json_content = $this->from_file();
+                // }
 
                 return $json_content;
             }
