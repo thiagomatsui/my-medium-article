@@ -119,14 +119,13 @@ if(!class_exists('My_Medium_Article_Json')){
             }
 
             public function get_content() {
-                $json_content = $this->from_medium_feed();
 
-                // if($this->is_expired()){
-                //     $json_content = $this->from_medium_feed();
-                //     $this->save_file($json_content);
-                // } else {
-                //     $json_content = $this->from_file();
-                // }
+                if($this->is_expired()){
+                    $json_content = $this->from_medium_feed();
+                    $this->save_file($json_content);
+                } else {
+                    $json_content = $this->from_file();
+                }
 
                 return $json_content;
             }
