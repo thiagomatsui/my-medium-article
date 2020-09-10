@@ -1,7 +1,9 @@
 === My Medium Article ===
 Contributors: thiagomatsui
+Donate link: https://github.com/thiagomatsui/
 Tags: Medium, medium.com, Article, embed, posts, shortcodes, Widgets
 Requires at least: 4.7
+Requires PHP: 7.2
 Tested up to: 5.4
 Stable tag: 1.0.0
 License: GPLv3 or later
@@ -11,11 +13,13 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 == Description ==
 
 “My Medium Article” is a wordpress plugin that allows users display posts from medium.com on any part of their website and keep always updated even for cached posts.
-“My Medium Article” は medium.comから取得した記事を自分のウエブサイトの好きなところに表示出来ます、アップデート時にキャッシュしてくれるwordpressプラグインです。
+
+「My Medium Article」 は medium.comから取得した記事を自分のウエブサイトの好きなところに表示出来ます、アップデート時にキャッシュしてくれるwordpressプラグインです。
 
 **Multi Languages**
- - ja_JP (日本語)
- - en_ES (English)
+
+* ja_JP (日本語)
+* en_ES (English)
 
 = Requirements =
 
@@ -24,6 +28,10 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.html
 = Contribute =
 
 You can contribute to the source code in our [GitHub](https://github.com/thiagomatsui/my_medium_article) page.
+
+== Screenshots ==
+1.General Settings
+2.一般設定
 
 == Installation ==
 

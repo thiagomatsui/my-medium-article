@@ -1,95 +1,103 @@
+# Translation of Plugins - My Medium Article - Development (trunk) in Japanese
+# This file is distributed under the same license as the Plugins - My Medium Article - Development (trunk) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"POT-Creation-Date: 2020-09-01 16:10+0900\n"
-"PO-Revision-Date: 2020-09-02 11:29+0900\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: ja_JP\n"
+"PO-Revision-Date: 2020-09-10 22:45+0900\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.1\n"
-"X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Poedit-KeywordsList: __\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Generator: Poedit 2.4.1\n"
+"Language: ja_JP\n"
+"Project-Id-Version: Plugins - My Medium Article - Development (trunk)\n"
+"POT-Creation-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
 
-#: includes/class-my-medium-article-admin.php:41
-#: includes/class-my-medium-article-admin.php:53
-msgid "Settings"
-msgstr "設定"
-
-#: includes/class-my-medium-article-admin.php:42
-#: includes/class-my-medium-article-admin.php:67
-#: includes/class-my-medium-article-admin.php:81
-#: includes/class-my-medium-article-widget.php:11
-msgid "My Medium Article"
-msgstr "My Medium Article"
-
-#: includes/class-my-medium-article-admin.php:68
-msgid "Fill your Medium ID (User ID)"
-msgstr "自分の Medium ID を記入(アカウントID)"
-
-#: includes/class-my-medium-article-admin.php:108
-msgid "General Settings"
-msgstr "一般設定"
-
-#: includes/class-my-medium-article-admin.php:115
-msgid "Medium Id"
-msgstr "Medium Id"
-
-#: includes/class-my-medium-article-admin.php:123
-msgid "Cache Expiration"
-msgstr "キャッシュの有効期限"
-
-#: includes/class-my-medium-article-admin.php:131
-msgid "Post Settings"
-msgstr "投稿設定"
-
-#: includes/class-my-medium-article-admin.php:138
-msgid "Article Display"
-msgstr "記事表示"
-
-#: includes/class-my-medium-article-admin.php:146
-msgid "Article Display in All Page"
-msgstr "記事を全ページ表示"
-
-#: includes/class-my-medium-article-admin.php:154
-msgid "Customize Style"
-msgstr "カスタムスタイル"
-
-#: includes/class-my-medium-article-admin.php:161
-msgid "Your CSS"
-msgstr "あたなのCSS"
-
-#: includes/class-my-medium-article-admin.php:169
-msgid "Plugin Version"
-msgstr "プラグインバージョン"
-
-#: includes/class-my-medium-article-admin.php:206
-msgid "sample"
-msgstr "サンプル"
-
-#: includes/class-my-medium-article-admin.php:217
-msgid "hours is the expiration time for cached data"
-msgstr "時間がキャッシュされたデータの有効期限です"
-
-#: includes/class-my-medium-article-admin.php:218
-msgid "Test here"
-msgstr "ここでテスト"
-
-#: includes/class-my-medium-article-admin.php:226
-msgid "Max"
-msgstr "最大"
+#. Description of the plugin
+msgid "Display the article list from a Medium using Medium feed and keep always updated even for cached posts."
+msgstr "MEDIUM フィードからMEDIUMの記事リストを表示し、キャッシュされた投稿も常に更新します。"
 
 #: includes/class-my-medium-article-admin.php:234
+msgid "false"
+msgstr "いいえ"
+
+#: includes/class-my-medium-article-admin.php:233
 msgid "true"
 msgstr "はい"
 
-#: includes/class-my-medium-article-admin.php:235
-msgid "false"
-msgstr "いいえ"
+#: includes/class-my-medium-article-admin.php:225
+msgid "Max"
+msgstr "最大"
+
+#: includes/class-my-medium-article-admin.php:217
+msgid "Test here"
+msgstr "ここでテスト"
+
+#: includes/class-my-medium-article-admin.php:216
+msgid "hours is the expiration time for cached data"
+msgstr "時間がキャッシュされたデータの有効期限です"
+
+#: includes/class-my-medium-article-admin.php:205
+msgid "sample"
+msgstr "サンプル"
+
+#: includes/class-my-medium-article-admin.php:168
+msgid "Plugin Version"
+msgstr "プラグインバージョン"
+
+#: includes/class-my-medium-article-admin.php:160
+msgid "Your CSS"
+msgstr "あたなのCSS"
+
+#: includes/class-my-medium-article-admin.php:153
+msgid "Customize Style"
+msgstr "カスタムスタイル"
+
+#: includes/class-my-medium-article-admin.php:145
+msgid "Article Display in All Page"
+msgstr "記事を全ページ表示"
+
+#: includes/class-my-medium-article-admin.php:137
+msgid "Article Display"
+msgstr "記事表示"
+
+#: includes/class-my-medium-article-admin.php:130
+msgid "Post Settings"
+msgstr "投稿設定"
+
+#: includes/class-my-medium-article-admin.php:122
+msgid "Cache Expiration"
+msgstr "キャッシュの有効期限"
+
+#: includes/class-my-medium-article-admin.php:114
+msgid "Medium Id"
+msgstr "Medium Id"
+
+#: includes/class-my-medium-article-admin.php:107
+msgid "General Settings"
+msgstr "一般設定"
+
+#: includes/class-my-medium-article-admin.php:67
+msgid "Fill your Medium ID (User ID)"
+msgstr "自分の Medium ID を記入(アカウントID)"
+
+#: includes/class-my-medium-article-admin.php:40
+#: includes/class-my-medium-article-admin.php:52
+msgid "Settings"
+msgstr "設定"
+
+#: includes/class-my-medium-article-widget.php:44
+msgid "Articles to show"
+msgstr "表示する記事"
+
+#: includes/class-my-medium-article-widget.php:37
+msgid "Title"
+msgstr "タイトル"
+
+#: includes/class-my-medium-article-widget.php:28
+msgid "Last Posts"
+msgstr "最後の投稿"
 
 #: includes/class-my-medium-article-shortcode.php:21
 #: includes/class-my-medium-article-widget.php:76
@@ -97,14 +105,22 @@ msgstr "いいえ"
 msgid "Loading..."
 msgstr "読み込み中…"
 
-#: includes/class-my-medium-article-widget.php:28
-msgid "Last Posts"
-msgstr "最後の投稿"
+#. Author URI of the plugin
+msgid "https://github.com/thiagomatsui"
+msgstr "ttps://github.com/thiagomatsui"
 
-#: includes/class-my-medium-article-widget.php:37
-msgid "Title"
-msgstr "タイトル"
+#. Author of the plugin
+msgid "THIAGO MATSUI"
+msgstr "THIAGO MATSUI"
 
-#: includes/class-my-medium-article-widget.php:44
-msgid "Articles to show"
-msgstr "表示する記事"
+#. Plugin URI of the plugin
+msgid "https://github.com/thiagomatsui/my_medium_article"
+msgstr "https://github.com/thiagomatsui/my_medium_article"
+
+#. Plugin Name of the plugin
+#: includes/class-my-medium-article-widget.php:11
+#: includes/class-my-medium-article-admin.php:41
+#: includes/class-my-medium-article-admin.php:66
+#: includes/class-my-medium-article-admin.php:80
+msgid "My Medium Article"
+msgstr "My Medium Article"

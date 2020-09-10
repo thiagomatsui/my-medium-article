@@ -7,7 +7,7 @@
  * @wordpress-plugin
  * Plugin Name:       My Medium Article
  * Plugin URI:        https://github.com/thiagomatsui/my_medium_article
- * Description:       Display the last videos from a Youtube channel using Youtube feed and keep always updated even for cached posts.
+ * Description:       Display the article list from a Medium using Medium feed and keep always updated even for cached posts.
  * Version:           1.0.0
  * Author:            THIAGO MATSUI
  * Author URI:        https://github.com/thiagomatsui
